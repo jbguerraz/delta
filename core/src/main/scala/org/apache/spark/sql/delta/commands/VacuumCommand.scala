@@ -134,6 +134,7 @@ object VacuumCommand extends VacuumCommandImpl with Serializable {
         spark.sessionState.conf.getConf(DeltaSQLConf.DELTA_VACUUM_RELATIVIZE_IGNORE_ERROR)
       val fileListingParallelism =
         spark.sessionState.conf.getConf(DeltaSQLConf.DELTA_VACUUM_FILE_LISTING_PARALLELISM)
+          .getOrElse(spark.sparkContext.defaultParallelism)
 
 
       val allTrackedFiles = snapshot.stateDS
