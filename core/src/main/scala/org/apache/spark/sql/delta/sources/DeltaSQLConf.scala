@@ -658,6 +658,16 @@ trait DeltaSQLConfBase {
       .booleanConf
       .createWithDefault(true)
 
+  val FAST_INTERLEAVE_BITS_ENABLED =
+    buildConf("optimize.zorder.fastInterleaveBits.enabled")
+      .internal()
+      .doc(
+        """
+          |When true using the O(4 * 8) algorithm for interleave bit, otherwise the O(32 * n)
+          |algorithm, n is the number of input columns""".stripMargin)
+      .booleanConf
+      .createWithDefault(false)
+
   val INTERNAL_UDF_OPTIMIZATION_ENABLED =
     buildConf("internalUdfOptimization.enabled")
       .internal()
