@@ -862,15 +862,6 @@ trait DeltaSQLConfBase {
       .booleanConf
       .createWithDefault(false)
 
-  val FAST_INTERLEAVE_BITS_ENABLED =
-    buildConf("fast.interleaveBits.enabled")
-      .internal()
-      .doc(
-        """
-          |When true using the O(4 * 8) algorithm for interleave bit, otherwise the O(32 * n)
-          |algorithm, n is the number of input columns""".stripMargin)
-      .booleanConf
-      .createWithDefault(false)
 }
 
 object DeltaSQLConf extends DeltaSQLConfBase
